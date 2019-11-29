@@ -1,0 +1,22 @@
+body {
+    background-color: orangered;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20vmin 20vmin 20vmin 20vmin 20vmin 20vmin;
+    place-items: stretch;
+    gap: 1.5vmin;
+}
+
+.button-container {
+    background-color: white;
+    display: grid;
+    place-items: center;
+}
+
+.button1 {
+    background-color: pink;
+
+}
