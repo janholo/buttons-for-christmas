@@ -17,6 +17,21 @@ body {
 }
 
 .button1 {
-    background-color: pink;
+    background-color: white;
+    width: 16vmin;
+    height: 8vmin;
+    /* box-shadow: 0.5vmin 0.5vmin blue inset; */
+    border-width: 0.1vmin 0.3vmin 0.3vmin 0.1vmin;
+    border-color: grey;
+    font-size: 4vmin;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
 
+.button1:hover {
+    background-color: lightgrey;
+}
+
+.button1:active {
+    border-width: 0.3vmin 0.1vmin 0.1vmin 0.3vmin;
+    border-color: grey;
 }
