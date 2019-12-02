@@ -28,10 +28,34 @@ body {
 }
 
 .button1:hover {
-    background-color: lightgrey;
+    background-color: rgb(236, 236, 236);
 }
 
 .button1:active {
     border-width: 0.3vmin 0.1vmin 0.1vmin 0.3vmin;
     border-color: grey;
+}
+
+.button2 {
+    width: 16vmin;
+    height: 10vmin;
+    background-image: linear-gradient(to right, blue,indigo,violet); 
+    border-radius: 20%;
+    font-size: 4vmin;
+    transition: transform 0.3s;
+    transition-timing-function: ease-out;
+}
+
+.button2:hover {
+    width: 18vmin;
+    height: 12vmin;
+    transform: rotate(15deg); 
+    background-image: linear-gradient(to right,yellow,green,blue); 
+}
+
+.button2:active {
+    width: 20vmin;
+    height: 14vmin;
+    transform: rotate(-15deg);
+    background-image: linear-gradient(to right,red,orange,yellow); 
 }
