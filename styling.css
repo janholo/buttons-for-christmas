@@ -59,3 +59,65 @@ body {
     transform: rotate(-15deg);
     background-image: linear-gradient(to right,red,orange,yellow); 
 }
+
+.button3 {
+    width: 20vmin;
+    height: 14vmin;
+    overflow: hidden;
+    padding: 0;
+}
+
+.button3 .normal {
+    height: 100%;
+}
+
+.button3:active .normal {
+    display: none;
+}
+
+.button3 .pressed {
+    width: 100%;
+    display: none;
+}
+
+.button3:active .pressed {
+    display: unset
+}
+
+.button4 {
+    box-shadow: none;
+    border-width: 0.3vmin;
+    border-color: lightblue;
+    border-style: solid;
+    position: relative;
+    z-index: 1;
+    width: 20vmin;
+    height: 8vmin;
+    cursor: all-scroll;
+    font-size: 4vmin;
+    color: white;
+    background: linear-gradient(to right, rgb(170, 124, 39), rgb(202, 141, 28), rgb(170, 124, 39));
+}
+
+.button4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgb(112, 82, 26), rgb(151, 106, 21), rgb(112, 82, 26));
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: -1;
+  }
+  .button4:active::before {
+    opacity: 1;
+  }
+  
+
+.button4:active {
+    border-style: solid;
+    cursor: crosshair;
+    
+}
