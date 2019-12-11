@@ -150,7 +150,7 @@ body {
 
 .button6 {
     width: 20vmin;
-    height: 8vmin;
+    height: 12vmin;
     background: greenyellow;
     animation-name: button-warp;
     animation-duration: 0.25s;
@@ -159,4 +159,168 @@ body {
     animation-timing-function: linear;
     animation-fill-mode: both;
 
+}
+
+.button7 {
+    background: hsl(0, 0%, 10%);
+    color: white;
+    width: 20vmin;
+    height: 12vmin;
+    font-size: 8vmin;
+    font-weight: 900;
+}
+
+.button7:hover {
+    background: hsl(0, 0%, 20%);
+    color: rgb(52, 110, 177);
+}
+
+.button7:active {
+    background: hsl(0,0%,10%);
+    color: hsl(212, 75%, 35%);
+}
+
+.button8 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+
+    background: orange;
+    width: 20vmin;
+    height: 7vmin;
+    border-radius: 2vmin;
+    box-shadow: unset;
+    border-style: unset;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.button8 .first {
+    transition: transform 0.3s;
+    transition-timing-function: ease-out;
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.button8:hover .first {
+    transform: translateY(10vmin);
+}
+
+.button8 .second {
+    transition: transform 0.3s;
+    transition-timing-function: ease-out;
+    transform: translateY(-10vmin);
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.button8:hover .second {
+    transform: translateY(0);
+}
+
+.button8:active .second {
+    transform: translateY(10vmin);
+}
+
+.button8 .third {
+    transition: transform 0.3s;
+    transition-timing-function: ease-out;
+    transform: translateY(-10vmin);
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.button8:active .third {
+    transform: translateY(0);
+}
+
+.button9 {
+    width: 10vmin;
+    height: 10vmin;
+    border-radius: 5vmin;
+    padding: 0;
+    margin: 0;
+    border: unset;
+    background: black;
+}
+
+.button9 i {
+    color: white
+}
+
+.button9:hover i {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 48px;
+}
+
+.button9:active i {
+    color: cadetblue;
+}
+
+:root {
+    --custom-green: rgb(12, 173, 12);
+  }
+
+.button10 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    background-color: var(--custom-green);
+    color: white;
+    width: 20vmin;
+    height: 10vmin;
+    margin: 0;
+    padding: 0;
+    border-color: var(--custom-green);
+    border-style: solid;
+    border-radius: 1vmin;
+    border-width: 0;
+    box-shadow: 0.2vmin 0.2vmin 1vmin grey;
+    font-size: 4vmin;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    transition: width 0.3s, color 0.3s, background-color 0.3s, border-width 0.3s;
+    transition-timing-function: ease-out;
+}
+
+.button10:active {
+    background-color: white;
+    color: var(--custom-green);
+    border-width: 0.4vmin;
+    width: 10vmin;
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.button10 .number {
+    grid-area: 1 / 1 / 1 / 1;
+    color: white;
+    transition: color 0.3;
+    transition-timing-function: ease-out;
+}
+
+.button10 .icon {
+    grid-area: 1 / 1 / 1 / 1;
+    color: transparent;
+    transition: color 0.3s;
+    transition-timing-function: ease-out;
+}
+
+.button10:active .number {
+    color: transparent;
+}
+
+.button10:active .icon {
+    color: var(--custom-green);
+}
+
+.button11 {
+    width: 12vmin;
+    height: 6vmin;
+    margin: 0;
+    padding: 0;
+    box-shadow: 1vmin 1vmin 1vmin grey;
+}
+
+.button11:active {
+    box-shadow: 0vmin 0vmin 1vmin grey;
+    margin: 1vmin 0 0 1vmin;
 }
