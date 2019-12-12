@@ -324,3 +324,63 @@ body {
     box-shadow: 0vmin 0vmin 1vmin grey;
     margin: 1vmin 0 0 1vmin;
 }
+
+.button12 {
+    background-color: rgb(125, 64, 187);
+    box-shadow: 0.3vmin 0.3vmin 1vmin rgb(125, 64, 187);
+    color: white;
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    transition: width 0.2s, height 0.2s, background-image 0.2s;
+    transition-timing-function: ease-out;
+    overflow: hidden;
+    font-size: 3vmin;
+}
+
+.button12:hover {
+    width: 22vmin;
+    height: 8.8vmin;
+    background-image: linear-gradient(to right, rgb(63, 31, 95), rgb(63, 31, 95) 30%, rgb(125, 64, 187) 30%, rgb(125, 64, 187));
+}
+
+.button12:active {
+    background-image: linear-gradient(to right, rgb(63, 31, 95), rgb(63, 31, 95) 80%, rgb(125, 64, 187) 80%, rgb(125, 64, 187));
+}
+
+.button12 i {
+    transform: translateX(-6vmin);
+    grid-area: 1 / 1 / 1 / 1;
+    transition: transform 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+.button12:hover i {
+    transform: translateX(-15vmin);
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.button12::after {
+    content: "Upload";
+    grid-area: 1 / 1 / 1 / 1;
+    transform: translateX(3vmin);
+    transition: transform 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+.button12:hover::after {
+    transform: translateX(0);
+    content: "42%";
+}
+
+.button12:active::after {
+    transform: translateX(0);
+    content: "Completed!";
+}
+
