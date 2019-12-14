@@ -384,3 +384,43 @@ body {
     content: "Completed!";
 }
 
+.button13 {
+    width: 16vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 4vmin;
+    background-color: #A8A9AD;
+    transition: background-color 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.button13:active {
+    background-color: #108F00;
+}
+
+.button13 div {
+    width: 6.5vmin;
+    height: 6.5vmin;
+    border-radius: 3.25vmin;
+    background-color: #F2F2F2;
+    transform: translateX(1vmin);
+    transition-timing-function: ease-in-out;
+    transition: transform 0.2s;
+}
+
+.button13:active div {
+    transform: translateX(8.5vmin);
+}
+
+.button14 {
+    width: 8.5vmin;
+    height: 12vmin;
+    background-size: 100%;
+    background-image: url(https://media.istockphoto.com/vectors/off-electric-swith-vector-id518598030);
+}
+
+.button14:active {
+    background-image: url(https://media.istockphoto.com/vectors/electric-switch-vector-id518598188);
+}
