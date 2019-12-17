@@ -424,3 +424,22 @@ body {
 .button14:active {
     background-image: url(https://media.istockphoto.com/vectors/electric-switch-vector-id518598188);
 }
+
+.button15 {
+    width: 21vmin;
+    height: 7vmin;
+    background: transparent;
+    fill: rgb(248, 248, 26);
+    stroke: black;
+    stroke-width: 0.2vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    font-weight: bold;
+    font-size: 3vmin;
+
+}
+
+.button15:active {
+    transform: scaleY(0.75) translateY(1vmin);
+}
