@@ -7,7 +7,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 20vmin 20vmin 20vmin 20vmin 20vmin 20vmin;
     place-items: stretch;
-    gap: 1.5vmin;
+    gap: 2vmin;
 }
 
 .button-container {
@@ -442,4 +442,90 @@ body {
 
 .button15:active {
     transform: scaleY(0.75) translateY(1vmin);
+}
+
+:root {
+    --neon-purple: rgb(155, 80, 230);
+}
+
+.button16 {
+    width: 21vmin;
+    height: 7vmin;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 5vmin;
+    color: var(--neon-purple);
+    border-color: var(--neon-purple);
+    border-style: solid;
+    border-radius: 2.5vmin;
+    border-width: 0.4vmin;
+
+}
+
+.button16:hover {
+    border-color: white;
+    color: white;
+    text-shadow: 0 0 0.5vmin white, 0 0 1vmin white, 0 0 1.5vmin rgb(155, 80, 230), 0 0 2vmin rgb(155, 80, 230), 0 0 2.5vmin rgb(155, 80, 230), 0 0 3vmin rgb(155, 80, 230), 0 0 3.5vmin rgb(155, 80, 230), 0 0 4vmin rgb(155, 80, 230), 0 0 4.5vmin rgb(155, 80, 230);
+}
+
+.button17 {
+    width: 21vmin;
+    height: 7vmin;
+    background: rgb(248, 248, 26);
+    margin: 0;
+    padding: 0;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.4vmin;
+    font-weight: bold;
+    font-size: 4vmin;
+    box-shadow: 0.5vmin 0.5vmin grey;
+    transition: transform 0.7s;
+    transition-timing-function: linear;
+}
+
+.button17:active {
+    transform: rotateY(180deg) rotateX(180deg);
+}
+
+.button18 {
+    width: 21vmin;
+    height: 7vmin;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: stretch;    
+    color: white;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    font-weight: bold;
+    font-size: 5.5vmin;
+    box-shadow: 0.3vmin 0.3vmin 0.5vmin grey;
+    transition: transform 0.2s;
+}
+
+.button18:active {
+    transform: scale(0.85, 0.85);
+}
+
+.button18 div {
+    grid-area: 1 / 1 / 1 / 1;
+    background: rgb(54, 87, 196);
+    transition: transform 0.3s;
+    transition-timing-function: ease-in-out;
+    transform-origin: 100% 0%;
+}
+
+.button18:hover div {
+
+    transform: rotate(-110deg);
+}
+
+.button18::before {
+    grid-area: 1 / 1 / 1 / 1;
+    content: "Hidden";
+    display: block;
+    background: rgb(70, 155, 44);
 }
