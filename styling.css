@@ -529,3 +529,57 @@ body {
     display: block;
     background: rgb(70, 155, 44);
 }
+
+.button19 {
+    width: 21vmin;
+    height: 7vmin;    
+    color: white;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    font-weight: bold;
+    font-size: 3.5vmin;
+    border-style: solid;
+    border-width: 0.2vmin;
+    border-color: white;
+    border-radius: 0.8vmin;
+    background-image: radial-gradient(circle farthest-corner at 50% 140%, white 0,yellow 20%, red 40%, transparent 80%);
+    transition: background-image 1.0s;
+}
+
+
+.button19:hover {
+    background-image: radial-gradient(circle farthest-corner at 50% 100%, white 0,yellow 20%, red 40%, transparent 80%);
+}
+
+.button19:active {
+    background-image: radial-gradient(circle farthest-corner at 50% 60%, white 0,yellow 20%, red 40%, transparent 80%);
+}
+
+.button20 {
+    width: 21vmin;
+    height: 7vmin;    
+    color: white;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 5%, grey 5%, grey 10%),
+                      repeating-linear-gradient(-45deg, transparent, transparent 5%, grey 5%, grey 10%);
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    font-weight: bold;
+    font-size: 3.5vmin;
+    border-style: solid;
+    border-width: 0.2vmin;
+    border-color: grey;
+    border-radius: 0.8vmin;
+}
+
+.button20:hover {
+    background-image: repeating-linear-gradient(20deg, transparent, transparent 5%, grey 5%, grey 10%),
+                      repeating-linear-gradient(-20deg, transparent, transparent 5%, grey 5%, grey 10%);
+}
+
+.button20:active {
+    background-image: repeating-linear-gradient(20deg, transparent, transparent 5%, rgb(168, 85, 85) 5%, grey 10%),
+                      repeating-linear-gradient(-20deg, transparent, transparent 5%, rgb(165, 121, 39) 5%, grey 10%);
+}
