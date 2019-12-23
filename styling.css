@@ -583,3 +583,48 @@ body {
     background-image: repeating-linear-gradient(20deg, transparent, transparent 5%, rgb(168, 85, 85) 5%, grey 10%),
                       repeating-linear-gradient(-20deg, transparent, transparent 5%, rgb(165, 121, 39) 5%, grey 10%);
 }
+
+.button21 {
+    width: 21vmin;
+    height: 5vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr; 
+    grid-template-rows: 1fr;
+    place-items: center;
+    padding-left: 0.5vmin;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.0));
+}
+
+.button21:hover {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.0));
+}
+
+.button21:active {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 1.0) 50%, rgba(255, 255, 255, 0.0));
+}
+
+.button21 div {
+    grid-area: 1/1/1/1;
+}
+
+.button21::after {
+    content: "21";
+    grid-area: 1/2/1/2;
+}
+
+.button22 {
+    width: 21vmin;
+    height: 9vmin;
+    margin: 0;
+    padding: 0;
+    border-style: solid;
+    border-color: black;
+}
+
+.button22:active {
+    transform: scale(0.8);
+}

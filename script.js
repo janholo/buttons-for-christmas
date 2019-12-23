@@ -18,3 +18,15 @@ clickSoundButton.addEventListener("mouseup", function(e){
   var audio = new Audio('switchSound.wav');
   audio.play();
 }, false)
+
+var button22 = document.getElementById("button22");
+button22.addEventListener("mousemove", function(e){
+  var rect = button22.getBoundingClientRect();
+  let x = e.clientX-rect.left;
+  let y = e.clientY-rect.top;
+  button22.style = "background-image: radial-gradient(circle 8vmin at " + x + "px " + y + "px, rgba(80, 80, 80,  0.5), transparent);"
+});
+
+button22.addEventListener("mouseleave", function(e){
+  button22.style = "background: transparent;"
+});
