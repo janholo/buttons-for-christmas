@@ -628,3 +628,85 @@ body {
 .button22:active {
     transform: scale(0.8);
 }
+
+.button23 {
+    width: 9vmin;
+    height: 9vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 50% 50%;
+    background-color: coral;
+    box-shadow: 0.2vmin 1vmin 1vmin grey;
+}
+
+@keyframes button-jump {
+    0% {transform: translateY(0vmin)}
+    50% {transform: translateY(-2vmin)}
+    100% {transform: translateY(0vmin)}
+  }
+
+.button23:hover {
+    animation-name: button-jump;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+
+.button23:active {
+    background-color: rgb(253, 145, 106);
+    box-shadow: 0.1vmin 0.5vmin 1vmin grey;
+}
+
+.button24 {
+    background-color: rgb(194, 139, 37);
+    box-shadow: 0.5vmin 0.5vmin 1vmin grey;
+    width: 20vmin;
+    height: 9vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(.37,-0.92,.33,.89);
+}
+
+.button24:hover {
+    transform: scale(1.2);
+}
+
+.button24:active {
+    transform: scale(1.1);
+    animation-name: button-highlight;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes button-highlight {
+    /* 0% {background: rgb(194, 139, 37)}
+    50% {background: rgb(119, 85, 23)}
+    100% {background: rgb(194, 139, 37)} */
+    0% {background-image: radial-gradient(circle 1vmin at 50% 50%, white, transparent);}
+    5% {background-image: radial-gradient(circle 2vmin at 50% 50%, white, transparent);}
+    10% {background-image: radial-gradient(circle 3vmin at 50% 50%, white, transparent);}
+    15% {background-image: radial-gradient(circle 4vmin at 50% 50%, white, transparent);}
+    20% {background-image: radial-gradient(circle 5vmin at 50% 50%, white, transparent);}
+    25% {background-image: radial-gradient(circle 6vmin at 50% 50%, white, transparent);}
+    30% {background-image: radial-gradient(circle 7vmin at 50% 50%, white, transparent);}
+    35% {background-image: radial-gradient(circle 8vmin at 50% 50%, white, transparent);}
+    40% {background-image: radial-gradient(circle 9vmin at 50% 50%, white, transparent);}
+    45% {background-image: radial-gradient(circle 10min at 50% 50%, white, transparent);}    
+    50% {background-image: radial-gradient(circle 11vmin at 50% 50%, white, transparent);}
+    55% {background-image: radial-gradient(circle 12vmin at 50% 50%, white, transparent);}
+    60% {background-image: radial-gradient(circle 13vmin at 50% 50%, white, transparent);}
+    65% {background-image: radial-gradient(circle 14vmin at 50% 50%, white, transparent);}
+    70% {background-image: radial-gradient(circle 15vmin at 50% 50%, white, transparent);}
+    75% {background-image: radial-gradient(circle 16vmin at 50% 50%, white, transparent);}
+    80% {background-image: radial-gradient(circle 17vmin at 50% 50%, white, transparent);}
+    85% {background-image: radial-gradient(circle 18vmin at 50% 50%, white, transparent);}
+    90% {background-image: radial-gradient(circle 19vmin at 50% 50%, white, transparent);}
+    95% {background-image: radial-gradient(circle 20vmin at 50% 50%, white, transparent);}
+    100% {background-image: radial-gradient(circle 21vmin at 50% 50%, white, transparent);}
+  }
+
+
