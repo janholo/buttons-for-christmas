@@ -5,7 +5,7 @@ body {
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 20vmin 20vmin 20vmin 20vmin 20vmin 20vmin;
+    grid-template-rows: repeat(12, 20vmin);
     place-items: stretch;
     gap: 2vmin;
 }
@@ -708,5 +708,787 @@ body {
     95% {background-image: radial-gradient(circle 20vmin at 50% 50%, white, transparent);}
     100% {background-image: radial-gradient(circle 21vmin at 50% 50%, white, transparent);}
   }
+
+/* 25: material ripple, spawned by JS at the click position */
+.button25 {
+    position: relative;
+    overflow: hidden;
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 1vmin;
+    background-color: rgb(21, 101, 192);
+    color: white;
+    font-size: 4vmin;
+    box-shadow: 0 0.3vmin 0.8vmin grey;
+}
+
+.button25 .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: button-ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes button-ripple {
+    to {transform: scale(4); opacity: 0;}
+}
+
+/* 26: magnetic, the whole cell pulls the button towards the cursor */
+.button26 {
+    width: 16vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 4vmin;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    font-size: 4vmin;
+    transition: transform 0.15s ease-out, background-color 0.2s;
+}
+
+.button26 span {
+    display: inline-block;
+    transition: transform 0.15s ease-out;
+}
+
+.button26:active {
+    background-color: crimson;
+}
+
+/* 27: rotating conic-gradient border, animated through a registered @property */
+@property --button27-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes button-spin-angle {
+    to {--button27-angle: 360deg;}
+}
+
+.button27 {
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border: 0.6vmin solid transparent;
+    border-radius: 1.5vmin;
+    background: linear-gradient(rgb(20, 20, 20), rgb(20, 20, 20)) padding-box,
+                conic-gradient(from var(--button27-angle), red, orange, yellow, lime, cyan, blue, magenta, red) border-box;
+    color: white;
+    font-size: 4vmin;
+    animation: button-spin-angle 2s linear infinite;
+    animation-play-state: paused;
+    transition: box-shadow 0.2s;
+}
+
+.button27:hover {
+    animation-play-state: running;
+}
+
+.button27:active {
+    box-shadow: 0 0 2vmin magenta, 0 0 4vmin cyan;
+}
+
+/* 28: physical keyboard key with stacked shadows */
+.button28 {
+    width: 18vmin;
+    height: 9vmin;
+    margin: 0;
+    padding: 0;
+    border: 0.2vmin solid rgb(200, 200, 200);
+    border-radius: 1.2vmin;
+    background: linear-gradient(to bottom, white, rgb(235, 235, 235));
+    color: rgb(60, 60, 60);
+    font-family: 'Courier New', monospace;
+    font-size: 3.5vmin;
+    box-shadow: 0 1.2vmin 0 rgb(170, 170, 170), 0 1.6vmin 1.2vmin rgba(0, 0, 0, 0.35);
+    transform: translateY(-0.6vmin);
+    transition: transform 0.05s, box-shadow 0.05s;
+}
+
+.button28:active {
+    transform: translateY(0.6vmin);
+    box-shadow: 0 0 0 rgb(170, 170, 170), 0 0.3vmin 0.4vmin rgba(0, 0, 0, 0.35);
+}
+
+/* 29: glitch, two attr() copies sliced with animated clip-path */
+.button29 {
+    position: relative;
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    background: black;
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-size: 4.5vmin;
+    font-weight: bold;
+    letter-spacing: 0.5vmin;
+}
+
+.button29::before,
+.button29::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: black;
+    opacity: 0;
+}
+
+.button29:hover::before {
+    opacity: 1;
+    text-shadow: -0.5vmin 0 red;
+    animation: button-glitch-top 0.4s steps(2) infinite;
+}
+
+.button29:hover::after {
+    opacity: 1;
+    text-shadow: 0.5vmin 0 cyan;
+    animation: button-glitch-bottom 0.3s steps(2) infinite;
+}
+
+.button29:active {
+    filter: invert(1);
+}
+
+@keyframes button-glitch-top {
+    0% {clip-path: inset(0 0 70% 0); transform: translateX(-0.5vmin);}
+    25% {clip-path: inset(20% 0 50% 0); transform: translateX(0.5vmin);}
+    50% {clip-path: inset(10% 0 80% 0); transform: translateX(-0.3vmin);}
+    75% {clip-path: inset(40% 0 35% 0); transform: translateX(0.4vmin);}
+    100% {clip-path: inset(0 0 60% 0); transform: translateX(0);}
+}
+
+@keyframes button-glitch-bottom {
+    0% {clip-path: inset(60% 0 0 0); transform: translateX(0.5vmin);}
+    25% {clip-path: inset(75% 0 5% 0); transform: translateX(-0.5vmin);}
+    50% {clip-path: inset(50% 0 20% 0); transform: translateX(0.3vmin);}
+    75% {clip-path: inset(80% 0 0 0); transform: translateX(-0.4vmin);}
+    100% {clip-path: inset(65% 0 10% 0); transform: translateX(0);}
+}
+
+/* 30: confetti burst, every piece reads its own flight path from CSS variables */
+.button30 {
+    width: 18vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 4vmin;
+    background: linear-gradient(135deg, rgb(200, 30, 30), rgb(20, 120, 40));
+    color: white;
+    font-size: 4vmin;
+    font-weight: bold;
+    transition: transform 0.1s;
+}
+
+.button30:active {
+    transform: scale(0.92);
+}
+
+.confetti {
+    position: fixed;
+    width: 1vmin;
+    height: 1.6vmin;
+    margin: -0.8vmin 0 0 -0.5vmin;
+    pointer-events: none;
+    z-index: 10;
+    animation: button-confetti 1.2s ease-out forwards;
+}
+
+@keyframes button-confetti {
+    0% {transform: translate(0, 0) rotate(0deg); opacity: 1;}
+    40% {transform: translate(var(--dx), var(--dy)) rotate(calc(var(--rot) / 2)); opacity: 1;}
+    100% {transform: translate(calc(var(--dx) * 1.3), calc(var(--dy) + 15vmin)) rotate(var(--rot)); opacity: 0;}
+}
+
+/* 31: neumorphism / soft UI */
+.button31 {
+    width: 18vmin;
+    height: 9vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 2vmin;
+    background-color: rgb(224, 229, 236);
+    color: rgb(120, 130, 150);
+    font-size: 4vmin;
+    font-weight: bold;
+    box-shadow: 0.8vmin 0.8vmin 1.6vmin rgb(163, 177, 198), -0.8vmin -0.8vmin 1.6vmin white;
+    transition: box-shadow 0.2s, color 0.2s;
+}
+
+.button31:hover {
+    color: rgb(80, 90, 110);
+}
+
+.button31:active {
+    color: rgb(100, 140, 220);
+    box-shadow: inset 0.6vmin 0.6vmin 1.2vmin rgb(163, 177, 198), inset -0.6vmin -0.6vmin 1.2vmin white;
+}
+
+/* 32: text scramble / decode on hover (JS) */
+.button32 {
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border: 0.3vmin solid rgb(0, 200, 80);
+    background: black;
+    color: rgb(0, 230, 90);
+    font-family: 'Courier New', monospace;
+    font-size: 3.5vmin;
+    font-weight: bold;
+}
+
+.button32:active {
+    background: rgb(0, 230, 90);
+    color: black;
+}
+
+/* 33: hold to confirm, a slow transition on :active, finished via transitionend */
+.button33 {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border: 0.3vmin solid rgb(200, 40, 40);
+    border-radius: 1vmin;
+    background: white;
+    color: rgb(200, 40, 40);
+    font-size: 2.6vmin;
+    font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.button33::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background: rgb(255, 190, 190);
+    z-index: -1;
+    transition: width 0.3s ease-out;
+}
+
+.button33:active::before {
+    width: 100%;
+    transition: width 1.5s linear;
+}
+
+.button33.done {
+    background: rgb(40, 160, 60);
+    border-color: rgb(40, 160, 60);
+    color: white;
+}
+
+.button33.done::before {
+    display: none;
+}
+
+/* 34: clip-path morph from rectangle to star */
+.button34 {
+    width: 14vmin;
+    height: 14vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    background: linear-gradient(135deg, gold, orange);
+    color: rgb(120, 60, 0);
+    font-size: 3.5vmin;
+    font-weight: bold;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 35%, 100% 60%, 100% 100%, 50% 100%, 0% 100%, 0% 60%, 0% 35%, 0% 0%);
+    transition: clip-path 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.button34:hover {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.button34:active {
+    transform: rotate(72deg) scale(1.15);
+}
+
+/* 35: <canvas> snowfall inside the button */
+.button35 {
+    position: relative;
+    overflow: hidden;
+    width: 20vmin;
+    height: 10vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 1vmin;
+    background: linear-gradient(to bottom, rgb(10, 20, 60), rgb(40, 60, 120));
+    color: white;
+    font-size: 4vmin;
+    font-weight: bold;
+}
+
+.button35 canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.button35 span {
+    position: relative;
+}
+
+/* 36: gift box, the lid is a pseudo element that flips open */
+.button36 {
+    position: relative;
+    width: 14vmin;
+    height: 10vmin;
+    margin: 3vmin 0 0 0;
+    padding: 0;
+    border-style: none;
+    background: linear-gradient(to right, transparent 43%, gold 43%, gold 57%, transparent 57%), rgb(200, 30, 40);
+    font-size: 6vmin;
+}
+
+.button36::before {
+    content: "";
+    position: absolute;
+    left: -1vmin;
+    right: -1vmin;
+    top: -3vmin;
+    height: 3vmin;
+    background: linear-gradient(to right, transparent 43%, gold 43%, gold 57%, transparent 57%), rgb(170, 20, 30);
+    transform-origin: 0% 100%;
+    transition: transform 0.3s ease-out;
+    z-index: 1;
+}
+
+.button36:hover::before {
+    transform: rotate(-12deg) translateY(-0.5vmin);
+}
+
+.button36:active::before {
+    transform: translate(-2vmin, -4vmin) rotate(-35deg);
+}
+
+.button36 span {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0) scale(0);
+    transition: transform 0.3s cubic-bezier(.3, 1.8, .5, 1);
+}
+
+.button36:active span {
+    transform: translate(-50%, -7vmin) scale(1);
+}
+
+/* 37: mix-blend-mode difference sweep */
+.button37 {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border: 0.3vmin solid black;
+    background: white;
+    color: black;
+    font-size: 4vmin;
+    font-weight: 900;
+}
+
+.button37::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    mix-blend-mode: difference;
+    clip-path: circle(0% at 0% 50%);
+    transition: clip-path 0.5s ease-in-out;
+}
+
+.button37:hover::after {
+    clip-path: circle(150% at 0% 50%);
+}
+
+.button37:active::after {
+    background: red;
+}
+
+/* 38: jelly squish with the Web Animations API */
+.button38 {
+    width: 18vmin;
+    height: 9vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 2vmin;
+    background-color: rgb(255, 105, 180);
+    color: white;
+    font-size: 4vmin;
+    font-weight: bold;
+    box-shadow: 0 0.5vmin 1vmin rgba(0, 0, 0, 0.3);
+}
+
+/* 39: typewriter, width animated in steps() with a blinking caret */
+.button39 {
+    width: 22vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border: 0.3vmin solid rgb(60, 60, 60);
+    background: rgb(250, 245, 230);
+    color: rgb(40, 40, 40);
+    font-family: 'Courier New', monospace;
+    font-size: 3vmin;
+    font-weight: bold;
+}
+
+.button39::before {
+    content: "> ";
+    white-space: pre;
+}
+
+.button39 span {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+    width: 0;
+    border-right: 0.4vmin solid rgb(40, 40, 40);
+    transition: width 0.9s steps(9, end);
+    animation: button-caret 0.7s steps(1) infinite;
+}
+
+.button39:hover span {
+    width: 9ch;
+}
+
+.button39:active {
+    background: rgb(40, 40, 40);
+    color: rgb(250, 245, 230);
+}
+
+@keyframes button-caret {
+    50% {border-right-color: transparent;}
+}
+
+/* 40: organic blob, animated 8-value border-radius */
+.button40 {
+    width: 14vmin;
+    height: 14vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background: linear-gradient(45deg, rgb(0, 180, 200), rgb(120, 80, 255));
+    color: white;
+    font-size: 4vmin;
+    font-weight: bold;
+    animation: button-blob 4s ease-in-out infinite;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.button40:hover {
+    transform: scale(1.1);
+}
+
+.button40:active {
+    filter: hue-rotate(120deg);
+}
+
+@keyframes button-blob {
+    0% {border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;}
+    33% {border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;}
+    66% {border-radius: 50% 50% 40% 60% / 30% 50% 60% 70%;}
+    100% {border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;}
+}
+
+/* 41: day / night toggle, no JS: checkbox hack + :has() restyles the whole cell */
+.button-container:has(.button41) {
+    transition: background-color 0.4s;
+}
+
+.button-container:has(.button41 input:checked) {
+    background-color: rgb(20, 24, 60);
+}
+
+.button41 {
+    position: relative;
+    display: block;
+    width: 18vmin;
+    height: 8vmin;
+    border-radius: 4vmin;
+    background-color: rgb(120, 200, 255);
+    box-shadow: inset 0 0.3vmin 0.8vmin rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.button41:has(input:checked) {
+    background-color: rgb(40, 40, 90);
+}
+
+.button41 input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.button41 .knob {
+    position: absolute;
+    top: 1vmin;
+    left: 1vmin;
+    width: 6vmin;
+    height: 6vmin;
+    border-radius: 50%;
+    background-color: gold;
+    box-shadow: 0 0 1.5vmin gold;
+    transition: transform 0.4s ease-in-out, background-color 0.4s, box-shadow 0.4s;
+}
+
+.button41 input:checked + .knob {
+    transform: translateX(10vmin);
+    background-color: rgb(230, 230, 210);
+    box-shadow: inset -1.5vmin -0.5vmin 0 rgb(180, 180, 160);
+}
+
+.button41 input:focus-visible + .knob {
+    outline: 0.3vmin solid black;
+}
+
+/* 42: shake + haptic feedback through the Vibration API */
+.button42 {
+    width: 18vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 1vmin;
+    background-color: rgb(60, 60, 60);
+    color: white;
+    font-size: 4vmin;
+    transition: background-color 0.2s;
+}
+
+.button42.shake {
+    background-color: rgb(210, 40, 40);
+    animation: button-shake 0.4s ease-in-out;
+}
+
+@keyframes button-shake {
+    0%, 100% {transform: translateX(0);}
+    20%, 60% {transform: translateX(-1.5vmin);}
+    40%, 80% {transform: translateX(1.5vmin);}
+}
+
+/* 43: 3D tilt + glare, driven by CSS custom properties set from JS */
+.button43 {
+    position: relative;
+    overflow: hidden;
+    width: 18vmin;
+    height: 11vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 1.5vmin;
+    background: linear-gradient(135deg, rgb(30, 60, 120), rgb(90, 30, 120));
+    color: white;
+    font-size: 4vmin;
+    font-weight: bold;
+    box-shadow: 0 1vmin 2vmin rgba(0, 0, 0, 0.4);
+    transform: perspective(40vmin) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--s, 1));
+    transition: transform 0.1s;
+}
+
+.button43::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.45), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.button43:hover::after {
+    opacity: 1;
+}
+
+.button43:active {
+    --s: 0.93;
+}
+
+/* 44: plays Jingle Bells, synthesized with the Web Audio API */
+.button44 {
+    width: 12vmin;
+    height: 12vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, rgb(255, 230, 120), goldenrod 60%, rgb(140, 100, 10));
+    font-size: 6vmin;
+    box-shadow: 0 0.6vmin 1vmin rgba(0, 0, 0, 0.4);
+    transform-origin: 50% 0%;
+}
+
+.button44.ringing {
+    animation: button-ring 0.18s ease-in-out infinite alternate;
+}
+
+@keyframes button-ring {
+    from {transform: rotate(-15deg);}
+    to {transform: rotate(15deg);}
+}
+
+/* 45: outlined text filled through background-clip: text */
+.button45 {
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border: 0.3vmin solid rgb(20, 120, 60);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 5.5vmin;
+    letter-spacing: 0.5vmin;
+    color: transparent;
+    -webkit-text-stroke: 0.2vmin rgb(20, 120, 60);
+    background-image: linear-gradient(to right, rgb(20, 120, 60) 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: background-position 0.5s ease-in-out;
+}
+
+.button45:hover {
+    background-position: 0 0;
+}
+
+.button45:active {
+    background-image: linear-gradient(to right, rgb(200, 30, 30) 50%, transparent 50%);
+    -webkit-text-stroke-color: rgb(200, 30, 30);
+}
+
+/* 46: halftone dots via mask-image, dot size transitioned through @property */
+@property --button46-dot {
+    syntax: '<percentage>';
+    initial-value: 45%;
+    inherits: false;
+}
+
+.button46 {
+    width: 20vmin;
+    height: 9vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 1vmin;
+    background-color: rgb(220, 30, 90);
+    color: white;
+    font-size: 5vmin;
+    font-weight: 900;
+    -webkit-mask-image: radial-gradient(circle, black var(--button46-dot), transparent calc(var(--button46-dot) + 1%));
+    mask-image: radial-gradient(circle, black var(--button46-dot), transparent calc(var(--button46-dot) + 1%));
+    -webkit-mask-size: 1.2vmin 1.2vmin;
+    mask-size: 1.2vmin 1.2vmin;
+    transition: --button46-dot 0.6s ease-in-out;
+}
+
+.button46:hover {
+    --button46-dot: 100%;
+}
+
+.button46:active {
+    background-color: rgb(120, 10, 50);
+}
+
+/* 47: runs away from the cursor (JS) until it gets tired */
+.button47 {
+    width: 14vmin;
+    height: 7vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 1vmin;
+    background-color: rgb(255, 200, 0);
+    font-size: 3vmin;
+    font-weight: bold;
+    transition: transform 0.25s ease-out;
+}
+
+/* 48: SVG outline drawn with stroke-dashoffset */
+.button48 {
+    position: relative;
+    width: 20vmin;
+    height: 8vmin;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    background: transparent;
+    color: rgb(30, 100, 50);
+    font-size: 4vmin;
+    font-weight: bold;
+}
+
+.button48 svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.button48 rect {
+    fill: transparent;
+    stroke-width: 3;
+    vector-effect: non-scaling-stroke;
+}
+
+.button48 .track {
+    stroke: rgb(220, 220, 220);
+}
+
+.button48 .line {
+    stroke: rgb(30, 100, 50);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 0.8s ease-in-out, fill 0.3s;
+}
+
+.button48:hover .line {
+    stroke-dashoffset: 0;
+}
+
+.button48:active .line {
+    fill: rgb(30, 100, 50);
+}
+
+.button48 span {
+    position: relative;
+    transition: color 0.3s;
+}
+
+.button48:active span {
+    color: white;
+}
 
 
